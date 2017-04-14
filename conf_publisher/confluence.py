@@ -69,7 +69,10 @@ class Page(Content):
 
         del first['body']
         del second['body']
-        if not PageBodyComparator.is_equal(self.body, other.body):
+        try:
+            if not PageBodyComparator.is_equal(self.body, other.body):
+                return False
+        except:
             return False
 
         return first == second
